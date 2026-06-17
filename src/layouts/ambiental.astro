@@ -1,0 +1,35 @@
+---
+import Layout from './Layout.astro';
+import LeadForm from './LeadForm.jsx';
+---
+
+<Layout 
+  title="Consultoría Ambiental (STGreenly)" 
+  description="Gestión ambiental, cumplimiento normativo y sostenibilidad estratégica corporativa."
+>
+  <section class="bg-corporativo-fondoClaro py-16 border-b border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="text-xs font-bold text-brand-stgreenly uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-full">Unidad Especializada</span>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-brand-stgreenly tracking-tight mt-4">STGreenly Sostenibilidad Ambiental</h1>
+      <p class="mt-4 text-lg text-corporativo-textoMutado">Consultoría y auditoría de alto nivel técnico para estructurar transiciones ecológicas organizacionales sólidas.</p>
+      
+      <div class="mt-6 flex justify-center gap-4">
+        <a href="https://www.stgreenly.com" target="_blank" rel="noopener noreferrer" class="border border-brand-stgreenly text-brand-stgreenly hover:bg-emerald-50 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all">
+          Visitar Portal STGreenly ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="bg-corporativo-fondoGris py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-corporativo-textoOscuro">Iniciar Evaluación Técnica</h2>
+        <p class="text-sm text-corporativo-textoMutado mt-2">Un especialista de la rama ambiental procesará los requerimientos de infraestructura y normativas de su empresa.</p>
+      </div>
+      
+      {/* Hidratación bajo demanda mediante client:visible */}
+      <LeadForm client:visible unidadBase="Consultoria" subUnidadInicial="Ambiental" />
+    </div>
+  </section>
+</Layout>

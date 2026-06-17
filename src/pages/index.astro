@@ -1,0 +1,400 @@
+---
+// Página de Expectativa - CTDO GROUP
+// Próximamente: www.ctdogroup.com
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTDO GROUP — Próximamente</title>
+  <meta name="description" content="Ecosistema empresarial que integra consultoría, comercio internacional, sostenibilidad, seguros, energía y transformación digital para Latinoamérica y Estados Unidos." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #060a12;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── Fondo animado ── */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(30,64,175,.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 60px 0 0;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30,64,175,.15);
+      border: 1px solid rgba(30,64,175,.4);
+      color: #93c5fd;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #60a5fa;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.8); }
+    }
+
+    .logo {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      color: #f8fafc;
+      line-height: 1;
+    }
+    .logo span { color: #3b82f6; font-weight: 400; }
+
+    .tagline {
+      margin-top: 16px;
+      font-size: clamp(.95rem, 2vw, 1.2rem);
+      color: #64748b;
+      font-weight: 400;
+      letter-spacing: .01em;
+    }
+    .tagline strong { color: #94a3b8; font-weight: 600; }
+
+    .hero-desc {
+      max-width: 640px;
+      margin: 20px auto 0;
+      font-size: .95rem;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #1e40af, #6366f1);
+      border-radius: 2px;
+      margin: 48px auto;
+    }
+
+    /* ── Sección de marcas ── */
+    .section-label {
+      text-align: center;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 36px;
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding-bottom: 80px;
+    }
+
+    /* ── Tarjeta de marca ── */
+    .brand-card {
+      position: relative;
+      background: rgba(15,23,42,.7);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 20px;
+      padding: 28px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: .7;
+      border-radius: 20px 20px 0 0;
+    }
+    .brand-card.is-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px var(--accent-dim);
+    }
+
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--accent-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      border: 1px solid var(--accent-border);
+    }
+
+    .card-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: .83rem;
+      color: #475569;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 16px;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--accent-text);
+      opacity: .7;
+      transition: opacity .2s;
+    }
+    .brand-card.is-link:hover .card-link { opacity: 1; }
+
+    .card-link-soon {
+      margin-top: 16px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #1e293b;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      align-self: flex-start;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: .8rem; color: #334155; }
+    footer a { color: #3b82f6; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .brands-grid { grid-template-columns: 1fr; }
+      header { padding-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Sitio Oficial en Construcción — Próximamente
+      </div>
+      <div class="logo">CTDO<span>GROUP</span></div>
+      <p class="tagline">
+        <strong>Conectamos Oportunidades, Soluciones y Negocios</strong>
+      </p>
+      <p class="hero-desc">
+        Un ecosistema empresarial especializado en impulsar el crecimiento de organizaciones, distribuidores e inversionistas desde Colombia hacia Latinoamérica y Estados Unidos.
+      </p>
+    </header>
+
+    <div class="divider"></div>
+
+    <p class="section-label">Nuestro Ecosistema de Marcas y Unidades de Negocio</p>
+
+    <div class="brands-grid">
+
+      <!-- ColombiatTodo -->
+      <a
+        href="https://www.colombiatodo.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="brand-card is-link"
+        style="--accent:#f97316; --accent-dim:rgba(249,115,22,.12); --accent-border:rgba(249,115,22,.22); --accent-text:#fb923c;"
+      >
+        <div class="card-icon">🌎</div>
+        <div class="card-tag">Negocios Internacionales</div>
+        <div class="card-title">ColombiatTodo CI SAS</div>
+        <div class="card-desc">Plataforma B2B de comercio internacional. Conectamos compradores corporativos con proveedores confiables de Colombia y el mundo.</div>
+        <div class="card-link">colombiatodo.com ↗</div>
+      </a>
+
+      <!-- STGreenly -->
+      <a
+        href="https://www.stgreenly.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="brand-card is-link"
+        style="--accent:#10b981; --accent-dim:rgba(16,185,129,.12); --accent-border:rgba(16,185,129,.22); --accent-text:#34d399;"
+      >
+        <div class="card-icon">🌿</div>
+        <div class="card-tag">Sostenibilidad Ambiental</div>
+        <div class="card-title">STGreenly</div>
+        <div class="card-desc">Consultoría y auditoría ambiental de alto nivel técnico. Estructuramos transiciones ecológicas sólidas y cumplimiento normativo corporativo.</div>
+        <div class="card-link">stgreenly.com ↗</div>
+      </a>
+
+      <!-- Rafa Solarte -->
+      <a
+        href="https://www.rafasolarte.co"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="brand-card is-link"
+        style="--accent:#8b5cf6; --accent-dim:rgba(139,92,246,.12); --accent-border:rgba(139,92,246,.22); --accent-text:#a78bfa;"
+      >
+        <div class="card-icon">👤</div>
+        <div class="card-tag">Marca Personal</div>
+        <div class="card-title">Rafael Solarte</div>
+        <div class="card-desc">Consultor estratégico, emprendedor y fundador de CTDO Group. Liderazgo empresarial, transformación organizacional y crecimiento sostenible.</div>
+        <div class="card-link">rafasolarte.co ↗</div>
+      </a>
+
+      <!-- MásRentable -->
+      <a
+        href="https://www.masrentable.co"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="brand-card is-link"
+        style="--accent:#eab308; --accent-dim:rgba(234,179,8,.12); --accent-border:rgba(234,179,8,.22); --accent-text:#facc15;"
+      >
+        <div class="card-icon">📈</div>
+        <div class="card-tag">Consultoría Financiera</div>
+        <div class="card-title">MásRentable</div>
+        <div class="card-desc">Soluciones para mejorar la rentabilidad y sostenibilidad financiera de empresas. Estrategia, estructura y acompañamiento para crecer con solidez.</div>
+        <div class="card-link">masrentable.co ↗</div>
+      </a>
+
+      <!-- CX -->
+      <div
+        class="brand-card"
+        style="--accent:#0ea5e9; --accent-dim:rgba(14,165,233,.12); --accent-border:rgba(14,165,233,.22); --accent-text:#38bdf8;"
+      >
+        <div class="card-icon">⭐</div>
+        <div class="card-tag">Experiencia del Cliente</div>
+        <div class="card-title">CX — Customer Experience</div>
+        <div class="card-desc">Diseño e implementación de estrategias de experiencia del cliente para construir fidelización, diferenciación y ventaja competitiva sostenible.</div>
+        <div class="card-link-soon">Próximamente</div>
+      </div>
+
+      <!-- Liderazgo Coherente -->
+      <div
+        class="brand-card"
+        style="--accent:#ec4899; --accent-dim:rgba(236,72,153,.12); --accent-border:rgba(236,72,153,.22); --accent-text:#f472b6;"
+      >
+        <div class="card-icon">🧠</div>
+        <div class="card-tag">Desarrollo Humano & Liderazgo</div>
+        <div class="card-title">Liderazgo Coherente / Cuántico</div>
+        <div class="card-desc">Programas de desarrollo de liderazgo consciente y coherente. Transformación personal y organizacional desde adentro hacia afuera.</div>
+        <div class="card-link-soon">Próximamente</div>
+      </div>
+
+      <!-- Grupos Electrógenos -->
+      <div
+        class="brand-card"
+        style="--accent:#f59e0b; --accent-dim:rgba(245,158,11,.12); --accent-border:rgba(245,158,11,.22); --accent-text:#fbbf24;"
+      >
+        <div class="card-icon">⚡</div>
+        <div class="card-tag">Soluciones Energéticas</div>
+        <div class="card-title">Grupos Electrógenos & Energía</div>
+        <div class="card-desc">Continuidad operativa garantizada. Grupos electrógenos, energía de respaldo, sistemas híbridos y soluciones de energía renovable para industria y empresa.</div>
+        <div class="card-link-soon">Próximamente</div>
+      </div>
+
+      <!-- KSEG Seguros -->
+      <div
+        class="brand-card"
+        style="--accent:#0284c7; --accent-dim:rgba(2,132,199,.12); --accent-border:rgba(2,132,199,.22); --accent-text:#38bdf8;"
+      >
+        <div class="card-icon">🛡️</div>
+        <div class="card-tag">Agencia de Seguros</div>
+        <div class="card-title">KSEG — Agencia de Seguros</div>
+        <div class="card-desc">Protección integral para personas, empresas y patrimonios. Seguros y gestión del riesgo con acompañamiento especializado y permanente.</div>
+        <div class="card-link-soon">Próximamente</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="wrapper">
+      <p>&copy; {new Date().getFullYear()} CTDO GROUP &nbsp;·&nbsp; <a href="mailto:gerencia@colombiatodo.com">gerencia@colombiatodo.com</a></p>
+      <p style="margin-top:6px;">Desde Colombia para Latinoamérica y Estados Unidos</p>
+    </div>
+  </footer>
+
+</body>
+</html>
